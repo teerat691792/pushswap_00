@@ -3,5 +3,5 @@
 
 void	ft_test(void)
 {
-	ft_printf("test.c printed\n");
+	ft_printf("test pushswap printed\n");
 }

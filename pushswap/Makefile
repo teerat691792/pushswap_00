@@ -9,7 +9,8 @@ LIB		=	-L. -lpushswap \
 
 NAME  = libpushswap.a
 
-SRC	= 		ft_pushswap.c
+SRC	= 		ft_pushswap.c \
+			ft_node.c
 
 OBJS := $(SRC:.c=.o)
 
