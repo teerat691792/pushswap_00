@@ -14,12 +14,33 @@ typedef struct s_node
 	struct s_node	*next;
 }		t_node;
 
+typedef struct s_stack
+{
+	void	*root_a;
+	void	*root_b;
+}	t_stack;
+
+//ft_stack.c
+void	ft_stackinit(t_stack **stack);
+
+//ft_show.c
+void ft_print_stack(t_node *stack);
+void ft_showstack(t_stack *stack);
+
+//ft_pushswap.c
 void	ft_test(void);
 
-//ft_node
+//ft_node.c
 t_node	*ft_nodenew(int value);
 void	ft_nodeaddback(void **root, t_node *node);
 void	ft_nodeclear(void **root);
 void	ft_nodeclear_rcs(t_node *node);
+void	ft_nodeaddfront(void **root, int value);
+void	ft_nodeaddback_v(void **root, int value);
+//void	ft_nodeaddafter_i(void **root, int value , int index);
+
+//ft_operate.c
+void	ft_ra(t_node **root);
+
 
 #endif

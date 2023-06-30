@@ -54,3 +54,47 @@ void	ft_nodeclear_rcs(t_node *node)
 	else
 		free(node);
 }
+
+void	ft_nodeaddfront(void **root, int value)
+{
+	t_node	*new;
+
+	new = ft_nodenew(value);
+	if (!new)
+		return ;
+	new->next = *root;
+	*root = new;
+}
+
+void	ft_nodeaddback_v(void **root,int value)
+{
+	t_node	*curr;
+	t_node	*new;
+
+	new = ft_nodenew(value);
+	if (!new)
+		return ;
+	curr = *root;
+	while (curr->next != NULL)
+		curr = curr->next;
+	curr->next = new;
+}
+
+/*
+void	ft_nodeaddafter_i(void **root, int value , int index)
+{
+	t_node	*new;
+	t_node	*curr;
+	int		i;
+
+	new = ft_nodenew(value);
+	if (!new)
+		return ;
+	i = 0;
+	curr = *root;
+	while (i < index)
+		curr = curr->next;
+	new->next = curr->next;
+	curr->next = new;
+}
+*/
