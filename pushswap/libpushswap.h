@@ -32,15 +32,21 @@ void	ft_test(void);
 
 //ft_node.c
 t_node	*ft_nodenew(int value);
-void	ft_nodeaddback(void **root, t_node *node);
+void	ft_nodeaddback(void **root, int value);
 void	ft_nodeclear(void **root);
 void	ft_nodeclear_rcs(t_node *node);
 void	ft_nodeaddfront(void **root, int value);
 void	ft_nodeaddback_v(void **root, int value);
 //void	ft_nodeaddafter_i(void **root, int value , int index);
+int		ft_checkloopexist(void **root);
+int		ft_nodecount_itr(void **root);
+int		ft_nodecount_rcs(t_node *node);
 
 //ft_operate.c
-void	ft_ra(t_node **root);
+void	ft_sa(t_stack *stack);
+void	ft_ra(t_stack *stack);
+void	ft_rra(t_stack *stack);
+void	ft_pb(t_stack *stack);
 
 
 #endif

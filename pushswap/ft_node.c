@@ -13,10 +13,12 @@ t_node	*ft_nodenew(int value)
 	return (new);
 }
 
-void	ft_nodeaddback(void **root, t_node *node)
+void	ft_nodeaddback(void **root, int value)
 {
 	t_node	*curr;
+	t_node	*node;
 
+	node = ft_nodenew(value);
 	if (*root == NULL)
 	{
 		*root = node;
@@ -34,7 +36,7 @@ void	ft_nodeclear(void **root)
 	t_node	*tmp;
 
 	curr = *root;
-	while (curr->next != NULL)
+	while (curr != NULL)
 	{
 		tmp = curr;
 		curr = curr->next;
@@ -98,3 +100,45 @@ void	ft_nodeaddafter_i(void **root, int value , int index)
 	curr->next = new;
 }
 */
+
+int	ft_checkloopexist(void **root)
+{
+	t_node	*slow;
+	t_node	*fast;
+
+	slow = *root;
+	fast = *root;
+	while (slow != NULL && fast != NULL && fast->next != NULL)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+		{
+			ft_printf("loop FOUND!!!!\n");
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int	ft_nodecount_itr(void **root)
+{
+	int		count;
+	t_node	*curr;
+
+	count = 0;
+	curr = *root;
+	while (curr != NULL)
+	{
+		curr = curr->next;
+		count++;
+	}
+	return (count);
+}
+
+int	ft_nodecount_rcs(t_node *node)
+{
+	if (node == NULL)
+		return (0);
+	return (1 + ft_nodecount_rcs(node->next));
+}

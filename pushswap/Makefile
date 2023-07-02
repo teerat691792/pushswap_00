@@ -11,8 +11,8 @@ NAME  = libpushswap.a
 
 SRC	= 		ft_pushswap.c \
 			ft_node.c \
-			ft_show.c \
-			ft_operate.c
+			ft_operate.c \
+			ft_show.c
 #			ft_stack.c
 
 OBJS := $(SRC:.c=.o)
@@ -27,16 +27,16 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
-t:
-	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
+t: re
+	./push_swap
 
 clean:
 	rm -f $(OBJS)
-	make clean -C ./libft
+#	make clean -C ./libft
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./libft
+#	make fclean -C ./libft
 
 re : fclean all
 
