@@ -1,24 +1,23 @@
 
 #include "libpushswap.h"
 
-//swap last 2 nodes of stack_a |OR| do nothing if there is only one or NO
-void	ft_sa(t_stack *stack)
+void	ft_swapsecondlast(void **root)
 {
 	t_node	*second_last;
 	t_node	*last;
 	t_node	*tmp;
 
-	if (ft_nodecount_rcs(stack->root_a) < 2)
+	if (ft_nodecount_rcs(*root) < 2)
 		return ;
-	else if (ft_nodecount_rcs(stack->root_a) == 2)  //should call ft_ra instead
+	else if (ft_nodecount_rcs(*root) == 2)  //should call ft_ra instead
 	{
-		second_last = stack->root_a;
+		second_last = *root;
 		last = second_last->next;
-		stack->root_a = last;
+		*root = last;
 	}
 	else
 	{
-		tmp = stack->root_a;
+		tmp = *root;
 		while (tmp->next->next->next != NULL)
 			tmp = tmp->next;
 		second_last = tmp->next;
@@ -27,57 +26,133 @@ void	ft_sa(t_stack *stack)
 	}
 	last->next = second_last;
 	second_last->next = NULL;
+}
+//swap last 2 nodes of stack_a |OR| do nothing if there is only one or NO
+void	ft_sa(t_stack *stack)
+{
+	ft_swapsecondlast(&stack->root_a);
 	ft_printf("sa\n");
 	ft_showstack(stack);
 }
-//swap last 2 nodes of stack_b |OR| do nothing if there is only one or NO
-// do sa && sb , ss
 
+//swap last 2 nodes of stack_b |OR| do nothing if there is only one or NO
+void	ft_sb(t_stack *stack)
+{
+	ft_swapsecondlast(&stack->root_b);
+	ft_printf("sb\n");
+	ft_showstack(stack);
+}
+
+// do sa && sb ==> ss
+void	ft_ss(t_stack *stack)
+{
+	ft_swapsecondlast(&stack->root_a);
+	ft_swapsecondlast(&stack->root_b);
+	ft_printf("ss\n");
+	ft_showstack(stack);
+}
+
+void	ft_stepdown(void **root)
+{
+	t_node	*last;
+	t_node	*first;
+
+	first = *root;
+	last = *root;
+	while (last->next->next != NULL)
+		last = last->next;
+	last->next->next = first;
+	*root = last->next;
+	last->next = NULL;
+}
+
+//take last node of stack_b to first node of stack_b
+void	ft_rb(t_stack *stack)
+{
+	ft_stepdown(&stack->root_b);
+	ft_printf("rb\n");
+	ft_showstack(stack);
+}
 
 //take last node of stack_a to first node of stack_a
 void	ft_ra(t_stack *stack)
 {
-	t_node	*last;
-	t_node	*first;
-
-	first = stack->root_a;
-	ft_printf("firsti->value : %d\t",first->value);
-	last = stack->root_a;
-	while (last->next->next != NULL)
-		last = last->next;
-	ft_printf("last->value : %d\t\t", last->value);
-	ft_printf("move->value : %d\n", last->next->value);
-
-	last->next->next = first;
-	stack->root_a = last->next;
-	last->next = NULL;
+	ft_stepdown(&stack->root_a);
 	ft_printf("ra\n");
 	ft_showstack(stack);
 }
-//take last node of stack_b to first node of stack_b
-//do ra & rb , rr
 
-//take first node of stack_a to last node of stack_a
-void	ft_rra(t_stack *stack)
+// ra & rb ==> rr
+void	ft_rr(t_stack *stack)
+{
+	ft_stepdown(&stack->root_a);
+	ft_stepdown(&stack->root_b);
+	ft_printf("rr\n");
+	ft_showstack(stack);
+}
+
+void	ft_stepup(void **root)
 {
 	t_node	*last;
 	t_node	*first;
 
-	first = stack->root_a;
-	last = stack->root_a;
+	first = *root;
+	last = *root;
 	while (last->next != NULL)
 		last = last->next;
-
-	stack->root_a = first->next;
 	last->next = first;
+	*root = first->next;
 	first->next = NULL;
+}
+
+//take first node of stack_b to last node of stack_b
+void ft_rrb(t_stack *stack)
+{
+	ft_stepup(&stack->root_b);
+	ft_printf("rrb\n");
+	ft_showstack(stack);
+}
+
+///do rra & rrb ==> rrr
+void	ft_rrr(t_stack *stack)
+{
+	ft_stepup(&stack->root_a);
+	ft_stepup(&stack->root_b);
+	ft_printf("rrr\n");
+	ft_showstack(stack);
+}
+//take first node of stack_a to last node of stack_a
+void	ft_rra(t_stack *stack)
+{
+	ft_stepup(&stack->root_a);
 	ft_printf("rra\n");
 	ft_showstack(stack);
 }
-//take first node of stack_b to last node of stack_b
-///do rra & rrb , rrr
 
 //take last node of stack_b to last node of stack_a |OR| do nothing if stack_b is empty, pa
+void	ft_pa(t_stack *stack)
+{
+	t_node	*last_a;
+	t_node	*last_b;
+
+	if (stack->root_b == NULL)
+		return ;
+	last_b = stack->root_b;
+	while (last_b->next->next != NULL)
+		last_b = last_b->next;
+	last_a = stack->root_a;
+	if (last_a == NULL)
+		stack->root_a = last_b->next;
+	else
+	{
+		while (last_a->next != NULL)
+			last_a = last_a->next;
+		last_a->next = last_b->next;
+	}
+	last_b->next = NULL;
+	ft_printf("pa\n");
+	ft_showstack(stack);
+}
 //take last node of stack_a to last node of stack_b |OR| do nothing if stack_a is empty, pb
 void	ft_pb(t_stack *stack)
 {

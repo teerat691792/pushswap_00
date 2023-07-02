@@ -21,15 +21,8 @@ int	main(void)
 //	ft_nodeaddfront(&s->root_a, 50);
 //	ft_nodeaddfront(&s->root, 5020);
 //	ft_nodeaddback_v(&s->root,888);
-
-	ft_ra(s);
-	ft_ra(s);
-	ft_ra(s);
-	ft_rra(s);
-	ft_rra(s);
-	ft_rra(s);
-	ft_sa(s);
-	ft_sa(s);
+	ft_pb(s);
+	ft_pb(s);
 	ft_pb(s);
 	ft_pb(s);
 	ft_pb(s);
