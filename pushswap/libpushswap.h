@@ -23,9 +23,21 @@ typedef struct s_stack
 //ft_stack.c
 void	ft_stackinit(t_stack **stack);
 
+//ft_mergesort.c
+void	ft_merge_sort(int *arr, int len);
+void	ft_merge_rcs(int *arr, int lf, int rg);
+void	ft_merge_arr(int *arr,int lf, int mid, int rg);
+void	ft_merge_put(int *arr, int *tmp, int *k, int *index);
+void	ft_copyarr(int *dst, int *src, int index, int len);
+void	ft_readarr(int *arr, int len);
+void	ft_noderead(t_stack *stack);
+void	ft_nodecopy(t_node *stack, int *arr);
+void	ft_putindex(void **root, int *arr);
+
 //ft_show.c
-void ft_print_stack(t_node *stack);
-void ft_showstack(t_stack *stack);
+void	ft_print_stack(t_node *stack);
+void	ft_showstack(t_stack *stack);
+void	ft_showindex(t_stack *stack);
 
 //ft_pushswap.c
 void	ft_test(void);

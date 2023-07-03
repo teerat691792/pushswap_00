@@ -9,6 +9,7 @@ t_node	*ft_nodenew(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
+	new->index = 0;
 	new->next = NULL;
 	return (new);
 }

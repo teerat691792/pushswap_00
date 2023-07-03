@@ -12,6 +12,7 @@ NAME  = libpushswap.a
 SRC	= 		ft_pushswap.c \
 			ft_node.c \
 			ft_operate.c \
+			ft_mergesort.c \
 			ft_show.c
 #			ft_stack.c
 

@@ -32,7 +32,6 @@ void	ft_sa(t_stack *stack)
 {
 	ft_swapsecondlast(&stack->root_a);
 	ft_printf("sa\n");
-	ft_showstack(stack);
 }
 
 //swap last 2 nodes of stack_b |OR| do nothing if there is only one or NO
@@ -40,7 +39,6 @@ void	ft_sb(t_stack *stack)
 {
 	ft_swapsecondlast(&stack->root_b);
 	ft_printf("sb\n");
-	ft_showstack(stack);
 }
 
 // do sa && sb ==> ss
@@ -49,7 +47,6 @@ void	ft_ss(t_stack *stack)
 	ft_swapsecondlast(&stack->root_a);
 	ft_swapsecondlast(&stack->root_b);
 	ft_printf("ss\n");
-	ft_showstack(stack);
 }
 
 void	ft_stepdown(void **root)
@@ -71,7 +68,6 @@ void	ft_rb(t_stack *stack)
 {
 	ft_stepdown(&stack->root_b);
 	ft_printf("rb\n");
-	ft_showstack(stack);
 }
 
 //take last node of stack_a to first node of stack_a
@@ -79,7 +75,6 @@ void	ft_ra(t_stack *stack)
 {
 	ft_stepdown(&stack->root_a);
 	ft_printf("ra\n");
-	ft_showstack(stack);
 }
 
 // ra & rb ==> rr
@@ -88,7 +83,6 @@ void	ft_rr(t_stack *stack)
 	ft_stepdown(&stack->root_a);
 	ft_stepdown(&stack->root_b);
 	ft_printf("rr\n");
-	ft_showstack(stack);
 }
 
 void	ft_stepup(void **root)
@@ -110,7 +104,6 @@ void ft_rrb(t_stack *stack)
 {
 	ft_stepup(&stack->root_b);
 	ft_printf("rrb\n");
-	ft_showstack(stack);
 }
 
 ///do rra & rrb ==> rrr
@@ -119,14 +112,12 @@ void	ft_rrr(t_stack *stack)
 	ft_stepup(&stack->root_a);
 	ft_stepup(&stack->root_b);
 	ft_printf("rrr\n");
-	ft_showstack(stack);
 }
 //take first node of stack_a to last node of stack_a
 void	ft_rra(t_stack *stack)
 {
 	ft_stepup(&stack->root_a);
 	ft_printf("rra\n");
-	ft_showstack(stack);
 }
 
 //take last node of stack_b to last node of stack_a |OR| do nothing if stack_b is empty, pa
@@ -151,7 +142,6 @@ void	ft_pa(t_stack *stack)
 	}
 	last_b->next = NULL;
 	ft_printf("pa\n");
-	ft_showstack(stack);
 }
 //take last node of stack_a to last node of stack_b |OR| do nothing if stack_a is empty, pb
 void	ft_pb(t_stack *stack)
@@ -175,6 +165,5 @@ void	ft_pb(t_stack *stack)
 	}
 	last_a->next = NULL;
 	ft_printf("pb\n");
-	ft_showstack(stack);
 }
 
