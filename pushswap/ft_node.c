@@ -14,7 +14,7 @@ t_node	*ft_nodenew(int value)
 	return (new);
 }
 
-void	ft_nodeaddback(void **root, int value)
+void	ft_nodeaddback(t_node **root, int value)
 {
 	t_node	*curr;
 	t_node	*node;
@@ -31,7 +31,7 @@ void	ft_nodeaddback(void **root, int value)
 	curr->next = node;
 }
 
-void	ft_nodeclear(void **root)
+void	ft_nodeclear(t_node **root)
 {
 	t_node	*curr;
 	t_node	*tmp;
@@ -58,7 +58,7 @@ void	ft_nodeclear_rcs(t_node *node)
 		free(node);
 }
 
-void	ft_nodeaddfront(void **root, int value)
+void	ft_nodeaddfront(t_node **root, int value)
 {
 	t_node	*new;
 
@@ -82,25 +82,6 @@ void	ft_nodeaddback_v(void **root,int value)
 		curr = curr->next;
 	curr->next = new;
 }
-
-/*
-void	ft_nodeaddafter_i(void **root, int value , int index)
-{
-	t_node	*new;
-	t_node	*curr;
-	int		i;
-
-	new = ft_nodenew(value);
-	if (!new)
-		return ;
-	i = 0;
-	curr = *root;
-	while (i < index)
-		curr = curr->next;
-	new->next = curr->next;
-	curr->next = new;
-}
-*/
 
 int	ft_checkloopexist(void **root)
 {
@@ -143,3 +124,5 @@ int	ft_nodecount_rcs(t_node *node)
 		return (0);
 	return (1 + ft_nodecount_rcs(node->next));
 }
+
+

@@ -1,7 +1,7 @@
 
 #include "libpushswap.h"
 
-void	ft_swapsecondlast(void **root)
+void	ft_swapsecondlast(t_node **root)
 {
 	t_node	*second_last;
 	t_node	*last;
@@ -49,7 +49,7 @@ void	ft_ss(t_stack *stack)
 	ft_printf("ss\n");
 }
 
-void	ft_stepdown(void **root)
+void	ft_stepdown(t_node **root)
 {
 	t_node	*last;
 	t_node	*first;
@@ -85,7 +85,7 @@ void	ft_rr(t_stack *stack)
 	ft_printf("rr\n");
 }
 
-void	ft_stepup(void **root)
+void	ft_stepup(t_node **root)
 {
 	t_node	*last;
 	t_node	*first;
@@ -129,9 +129,18 @@ void	ft_pa(t_stack *stack)
 	if (stack->root_b == NULL)
 		return ;
 	last_b = stack->root_b;
+	last_a = stack->root_a;
+	if (last_b->next == NULL)
+	{
+		stack->root_b = NULL;
+		while (last_a->next != NULL)
+			last_a = last_a->next;
+		last_a->next = last_b;
+		ft_printf("pa\n");
+		return ;
+	}
 	while (last_b->next->next != NULL)
 		last_b = last_b->next;
-	last_a = stack->root_a;
 	if (last_a == NULL)
 		stack->root_a = last_b->next;
 	else
@@ -152,9 +161,18 @@ void	ft_pb(t_stack *stack)
 	if (stack->root_a == NULL)
 		return ;
 	last_a = stack->root_a;
+	last_b = stack->root_b;
+	if (last_a->next == NULL)
+	{
+		stack->root_a = NULL;
+		while (last_b->next != NULL)
+			last_b = last_b->next;
+		last_b->next = last_a;
+		ft_printf("pb\n");
+		return ;
+	}
 	while (last_a->next->next != NULL)
 		last_a = last_a->next;
-	last_b = stack->root_b;
 	if (last_b == NULL)
 		stack->root_b = last_a->next;
 	else

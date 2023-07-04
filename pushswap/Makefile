@@ -13,6 +13,7 @@ SRC	= 		ft_pushswap.c \
 			ft_node.c \
 			ft_operate.c \
 			ft_mergesort.c \
+			ft_sort_a.c \
 			ft_show.c
 #			ft_stack.c
 
@@ -28,8 +29,40 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
-t: re
-	./push_swap
+t:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 2))
+		./push_swap $(ARG)
+
+
+2:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 2))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+3:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 3))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+4:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 4))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+5:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 5))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+10:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 10))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
 
 clean:
 	rm -f $(OBJS)

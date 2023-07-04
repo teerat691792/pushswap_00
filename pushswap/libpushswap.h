@@ -16,8 +16,8 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	void	*root_a;
-	void	*root_b;
+	t_node	*root_a;
+	t_node	*root_b;
 }	t_stack;
 
 //ft_stack.c
@@ -32,7 +32,7 @@ void	ft_copyarr(int *dst, int *src, int index, int len);
 void	ft_readarr(int *arr, int len);
 void	ft_noderead(t_stack *stack);
 void	ft_nodecopy(t_node *stack, int *arr);
-void	ft_putindex(void **root, int *arr);
+void	ft_putindex(t_node **root, int *arr);
 
 //ft_show.c
 void	ft_print_stack(t_node *stack);
@@ -44,12 +44,11 @@ void	ft_test(void);
 
 //ft_node.c
 t_node	*ft_nodenew(int value);
-void	ft_nodeaddback(void **root, int value);
-void	ft_nodeclear(void **root);
+void	ft_nodeaddback(t_node **root, int value);
+void	ft_nodeclear(t_node **root);
 void	ft_nodeclear_rcs(t_node *node);
-void	ft_nodeaddfront(void **root, int value);
+void	ft_nodeaddfront(t_node **root, int value);
 void	ft_nodeaddback_v(void **root, int value);
-//void	ft_nodeaddafter_i(void **root, int value , int index);
 int		ft_checkloopexist(void **root);
 int		ft_nodecount_itr(void **root);
 int		ft_nodecount_rcs(t_node *node);
@@ -66,6 +65,14 @@ void	ft_rrb(t_stack *stack);
 void	ft_rrr(t_stack *stack);
 void	ft_pb(t_stack *stack);
 void	ft_pa(t_stack *stack);
+
+//ft_sort_a.c
+int		ft_nodechecksort(t_node **root);
+void	ft_sort2_b(t_stack *s);
+void	ft_sort2_a(t_stack *s);
+void	ft_sort3_a(t_stack *s, int count);
+void	ft_sort4_a(t_stack *s, int count);
+void	ft_sort5_a(t_stack *s, int count);
 
 
 #endif

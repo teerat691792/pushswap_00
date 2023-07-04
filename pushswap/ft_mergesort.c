@@ -98,9 +98,8 @@ void	ft_noderead(t_stack *stack)
 	if (!arr)
 		return ;
 	ft_nodecopy(stack->root_a, arr);
-	// ft_readarr(arr, len);
 	ft_merge_sort(arr, len);
-	ft_readarr(arr, len);
+	// ft_readarr(arr, len);
 	ft_putindex(&stack->root_a, arr);
 	free(arr);
 }
@@ -118,7 +117,7 @@ void	ft_nodecopy(t_node *stack, int *arr)
 	}
 }
 
-void	ft_putindex(void **root, int *arr)
+void	ft_putindex(t_node **root, int *arr)
 {
 	int i;
 	t_node *curr;
