@@ -42,14 +42,15 @@ int	ft_findnodemin(t_node **root, int count, int min_index)
 	t_node	*curr;
 
 	if (*root == NULL)
-		return (0);
+		return (-1);
 	curr = *root;
-	while (curr->next != NULL)
+	count--;
+	while (curr != NULL)
 	{
-		count--;
 		if (curr->index == min_index)
 			return (count);
 		curr = curr->next;
+		count--;
 	}
 	return (0);
 }

@@ -14,6 +14,7 @@ SRC	= 		ft_pushswap.c \
 			ft_operate.c \
 			ft_mergesort.c \
 			ft_sort_a.c \
+			ft_sortmore.c \
 			ft_show.c
 #			ft_stack.c
 
@@ -30,7 +31,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 6))
+		$(eval ARG = $(shell shuf -i 0-100 -n 7))
 		./push_swap $(ARG)
 
 
@@ -60,6 +61,12 @@ t:	$(NAME)
 
 6:	$(NAME)
 		$(eval ARG = $(shell shuf -i 0-100 -n 6))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+7:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 7))
 		./push_swap $(ARG) | ./checker_linux $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l

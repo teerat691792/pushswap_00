@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	}
 	ft_noderead(s);
 	// ft_showindex(s);
+	// ft_printf("argc - 1: %d\n", argc- 1);
 	if (argc - 1 == 2)
 		ft_sort2_a(s);
 	else if (argc - 1 == 3)
@@ -34,6 +35,8 @@ int	main(int argc, char **argv)
 		ft_sort5_a(s, argc - 1);
 	else if (argc - 1 == 6)
 		ft_sort6_a(s, argc - 1);
+	else if (argc - 1 == 7)
+		ft_sort7_a(s, argc - 1);
 	// else
 		// ft_sortmore(s, argc - 1);
 	// ft_showindex(s);
