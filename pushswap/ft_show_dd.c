@@ -1,7 +1,7 @@
 
 #include "libpushswap.h"
 
-void	ft_print_stack(t_node *stack)
+void	ft_printstack_dd(t_node *stack)
 {
 	t_node	*curr;
 
@@ -19,18 +19,18 @@ void	ft_print_stack(t_node *stack)
 	ft_printf("\n");
 }
 
-void	ft_showstack(t_stack *stack)
+void	ft_showstack_dd(t_stack *stack)
 {
 	ft_printf("*****************************************************************\n");
 	ft_printf("stack_a : ");
-	ft_print_stack(stack->root_a);
+	ft_printstack_dd(stack->tail_a);
 	ft_printf("stack_b : ");
-	ft_print_stack(stack->root_b);
+	ft_printstack_dd(stack->tail_b);
 	ft_printf("*****************************************************************\n");
 	ft_printf("\n");
 }
 
-void	ft_print_index(t_node *stack)
+void	ft_printindex_dd(t_node *stack)
 {
 	t_node	*curr;
 
@@ -48,18 +48,19 @@ void	ft_print_index(t_node *stack)
 	ft_printf("\n");
 }
 
-void	ft_showindex(t_stack *stack)
+void	ft_showindex_dd(t_stack *stack)
 {
 	ft_printf("*****************************************************************\n");
 	ft_printf("stack_a :\t");
-	ft_print_stack(stack->root_a);
+	ft_printstack_dd(stack->tail_a);
 	ft_printf("index_a :\t");
-	ft_print_index(stack->root_a);
+	ft_printindex_dd(stack->tail_a);
 	ft_printf("\n");
 	ft_printf("stack_b :\t");
-	ft_print_stack(stack->root_b);
+	ft_printstack_dd(stack->tail_b);
 	ft_printf("index_b :\t");
-	ft_print_index(stack->root_b);
+	ft_printindex_dd(stack->tail_b);
 	ft_printf("*****************************************************************\n");
 	ft_printf("\n");
 }
+

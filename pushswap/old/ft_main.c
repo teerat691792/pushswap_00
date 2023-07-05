@@ -13,42 +13,34 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	s = malloc(sizeof(t_stack));
-	s->head_a = NULL;
-	s->head_b = NULL;
-	s->snd_a = NULL;
-	s->snd_b = NULL;
-	s->tail_a = NULL;
-	s->tail_b = NULL;
 	s->root_a = NULL;
 	s->root_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
 		num = ft_atoi(argv[i]);
-		ft_nodeaddfront_dd(&s->head_a, num);
-		// ft_nodeaddback_dd(&s->head_a, num);
+		ft_nodeaddfront(&s->root_a, num);
 		i++;
 	}
-	ft_pointnode_dd(s);
-	ft_showindex_dd(s);
-	ft_noderead_dd(s);
+	ft_noderead(s);
 	// ft_showindex(s);
 	// ft_printf("argc - 1: %d\n", argc- 1);
-	// if (argc - 1 == 2)
-		// ft_sort2(s);
+	if (argc - 1 == 2)
+		ft_sort2(s);
 	// else if (argc - 1 == 3)
 		// ft_sort3_a(s, argc - 1);
 	// else if (argc - 1 == 4)
 		// ft_sort4_a(s, argc - 1);
 	// else if (argc - 1 == 5)
 		// ft_sort5_a(s, argc - 1);
-	// else
-		// ft_sortmore(s, argc - 1);
+	else
+		ft_sortmore(s, argc - 1);
 	// ft_showindex(s);
 	// ft_nodechecksort(&s->root_a);
-	// ft_nodeclear_dd(&s->head_a);
-	ft_showindex_dd(s);
-	ft_stackclear_dd(s);
+
+	ft_nodeclear(&s->root_a);
+	ft_nodeclear(&s->root_b);
+	free(s);
 	return (0);
 }
 

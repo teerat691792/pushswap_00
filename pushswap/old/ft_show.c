@@ -47,7 +47,6 @@ void	ft_print_index(t_node *stack)
 	}
 	ft_printf("\n");
 }
-
 void	ft_showindex(t_stack *stack)
 {
 	ft_printf("*****************************************************************\n");

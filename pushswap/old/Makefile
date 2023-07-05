@@ -10,10 +10,6 @@ LIB		=	-L. -lpushswap \
 NAME  = libpushswap.a
 
 SRC	= 		ft_pushswap.c \
-			ft_node_dd.c \
-			ft_show_dd.c \
-			ft_index_dd.c \
-			ft_mergesort_dd.c \
 			ft_node.c \
 			ft_operate.c \
 			ft_mergesort.c \
