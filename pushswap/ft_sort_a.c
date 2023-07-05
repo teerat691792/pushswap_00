@@ -1,6 +1,59 @@
 
 #include "libpushswap.h"
 
+t_node	*ft_findtop(t_node **root)
+{
+	t_node	*curr;
+
+	if (*root == NULL)
+		return (NULL);
+	curr = *root;
+	while (curr->next != NULL)
+		curr = curr->next;
+	return (curr);
+}
+
+t_node	*ft_findsecond(t_node **root)
+{
+	t_node	*curr;
+
+	if (*root == NULL)
+		return (NULL);
+	curr = *root;
+	while (curr->next->next != NULL)
+		curr = curr->next;
+	return (curr);
+}
+
+t_node	*ft_findthird(t_node **root)
+{
+	t_node	*curr;
+
+	if (*root == NULL)
+		return (NULL);
+	curr = *root;
+	while (curr->next->next->next != NULL)
+		curr = curr->next;
+	return (curr);
+}
+
+int	ft_findnodemin(t_node **root, int count, int min_index)
+{
+	t_node	*curr;
+
+	if (*root == NULL)
+		return (0);
+	curr = *root;
+	while (curr->next != NULL)
+	{
+		count--;
+		if (curr->index == min_index)
+			return (count);
+		curr = curr->next;
+	}
+	return (0);
+}
+
 int	ft_nodechecksort(t_node **root)
 {
 	t_node	*curr;
@@ -106,20 +159,30 @@ void	ft_sort5_a(t_stack *stack, int count)
 
 void	ft_sort6_a(t_stack *stack, int count)
 {
-	int min_index;
+	int		min_index;
+	// t_node	*top;
+	// t_node	*second;
+	t_node	*third;
+	int		min_rank;
+	// int		len;
 
-	min_index = count - 6;
-	// ft_printf("min_index: %d\n", min_index);
 	if (ft_nodechecksort(&stack->root_a) == 0)
 		return ;
-	while (stack->root_a->next->next->next->next->next->index != min_index)
+	min_index = count - 6;
+	// ft_printf("min_index: %d\n", min_index);
+	third = ft_findthird(&stack->root_a);
+	// len = ft_nodecount_rcs(&stack->root_a);
+	min_rank = ft_findnodemin(&stack->root_a, count, min_index);
+	while (min_rank != min_index)
 	{
-		if (stack->root_a->next->next->next->next->index == min_index)
+		// ft_printf("loop sort6\n");
+		if (third->next->index == min_index)
 			ft_sa(stack);
-		else if (stack->root_a->next->next->next->index == min_index)
-			ft_rra(stack);
-		else
+		else if (third->index == min_index || min_rank < count / 2)
 			ft_ra(stack);
+		else
+			ft_rra(stack);
+		min_rank = ft_findnodemin(&stack->root_a, count, min_index);
 	}
 	ft_pb(stack);
 	// ft_showindex(stack);

@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 		ft_sort4_a(s, argc - 1);
 	else if (argc - 1 == 5)
 		ft_sort5_a(s, argc - 1);
+	else if (argc - 1 == 6)
+		ft_sort6_a(s, argc - 1);
 	// else
 		// ft_sortmore(s, argc - 1);
 	// ft_showindex(s);

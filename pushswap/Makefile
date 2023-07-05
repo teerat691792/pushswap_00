@@ -30,7 +30,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 2))
+		$(eval ARG = $(shell shuf -i 0-100 -n 6))
 		./push_swap $(ARG)
 
 
@@ -54,6 +54,12 @@ t:	$(NAME)
 
 5:	$(NAME)
 		$(eval ARG = $(shell shuf -i 0-100 -n 5))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+6:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 6))
 		./push_swap $(ARG) | ./checker_linux $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l

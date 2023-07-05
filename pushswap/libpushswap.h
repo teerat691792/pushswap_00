@@ -67,12 +67,16 @@ void	ft_pb(t_stack *stack);
 void	ft_pa(t_stack *stack);
 
 //ft_sort_a.c
+t_node	*ft_findtop(t_node **root);
+t_node	*ft_findsecond(t_node **root);
+t_node	*ft_findthird(t_node **root);
 int		ft_nodechecksort(t_node **root);
 void	ft_sort2_b(t_stack *s);
 void	ft_sort2_a(t_stack *s);
 void	ft_sort3_a(t_stack *s, int count);
 void	ft_sort4_a(t_stack *s, int count);
 void	ft_sort5_a(t_stack *s, int count);
+void	ft_sort6_a(t_stack *s, int count);
 
 
 #endif
