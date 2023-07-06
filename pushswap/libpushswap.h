@@ -70,6 +70,15 @@ void	ft_rrr(t_stack *stack);
 void	ft_pb(t_stack *stack);
 void	ft_pa(t_stack *stack);
 
+//ft_sort3_dd.c
+int		ft_nodechecksort(t_node **root);
+void	ft_sort2(t_stack *stack);
+void	ft_sort3(t_stack *stack, int count, int min_index);
+
+//ft_sortmore_dd.c
+void ft_sortmore(t_stack *stack, int count);
+
+
 /*singly linked list functions*/
 
 //ft_stack.c

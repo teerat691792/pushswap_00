@@ -31,52 +31,20 @@ int	main(int argc, char **argv)
 	}
 	ft_pointnode_dd(s);
 	ft_noderead_dd(s);
-	ft_showindex_dd(s);
+	// ft_showindex_dd(s);
 
-
-	ft_sa(s);
-	ft_showindex_dd(s);
-	ft_sa(s);
-
-	ft_showindex_dd(s);
-	ft_rra(s);
-	ft_showindex_dd(s);
-	ft_rra(s);
-	ft_showindex_dd(s);
-	ft_pb(s);
-	ft_showindex_dd(s);
-	ft_pb(s);
-	ft_showindex_dd(s);
-	ft_pb(s);
-	ft_showindex_dd(s);
-	ft_pb(s);
-	ft_showindex_dd(s);
-	ft_pb(s);
-	ft_showindex_dd(s);
-	ft_pa(s);
-	ft_pa(s);
-	ft_pa(s);
-	ft_pa(s);
-	ft_pa(s);
-	ft_pa(s);
-	ft_showindex_dd(s);
-
-
-	// ft_showindex(s);
 	// ft_printf("argc - 1: %d\n", argc- 1);
-	// if (argc - 1 == 2)
-		// ft_sort2(s);
-	// else if (argc - 1 == 3)
-		// ft_sort3_a(s, argc - 1);
-	// else if (argc - 1 == 4)
-		// ft_sort4_a(s, argc - 1);
-	// else if (argc - 1 == 5)
-		// ft_sort5_a(s, argc - 1);
+	if (argc - 1 == 2)
+		ft_sort2(s);
+	else
+		ft_sortmore(s, argc - 1);
+
+
+	// ft_showindex_dd(s);
+	// if (ft_nodechecksort(&s->tail_a) == 0)
+	// 	ft_printf("\t\t<3 sorted OK <3\n");
 	// else
-		// ft_sortmore(s, argc - 1);
-	// ft_showindex(s);
-	// ft_nodechecksort(&s->root_a);
-	// ft_nodeclear_dd(&s->head_a);
+	// 	ft_printf("\t\tStack SO  SHUFFLED  !!!!!!!\n");
 	ft_stackclear_dd(s);
 	return (0);
 }

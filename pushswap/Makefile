@@ -1,6 +1,5 @@
 
-
-
+LOOP	=	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 
 FLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
@@ -15,13 +14,8 @@ SRC	= 		ft_pushswap.c \
 			ft_index_dd.c \
 			ft_mergesort_dd.c \
 			ft_operate_dd.c \
-			ft_node.c \
-			ft_mergesort.c \
-			ft_show.c
-#			ft_sortmore.c \
-#			ft_sort_a.c
-#			ft_operate.c \
-#			ft_stack.c
+			ft_sort3_dd.c \
+			ft_sortmore_dd.c
 
 OBJS := $(SRC:.c=.o)
 
@@ -36,11 +30,16 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 5))
+		$(eval ARG = $(shell shuf -i 0-100 -n 3))
 		./push_swap $(ARG)
 
 tt:
-		for number in 1 2 3 4 ; do echo $$number && make t; done
+		@for number in $(LOOP) ; do make 2; done
+		@for number in $(LOOP) ; do make 3; done
+		@for number in $(LOOP) ; do make 5; done
+		@for number in $(LOOP) ; do make 10; done
+		@for number in $(LOOP) ; do make 100; done
+		@for number in $(LOOP) ; do make 500; done
 
 
 2:	$(NAME)
