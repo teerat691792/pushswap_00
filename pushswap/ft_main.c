@@ -30,8 +30,38 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	ft_pointnode_dd(s);
-	ft_showindex_dd(s);
 	ft_noderead_dd(s);
+	ft_showindex_dd(s);
+
+
+	ft_sa(s);
+	ft_showindex_dd(s);
+	ft_sa(s);
+
+	ft_showindex_dd(s);
+	ft_rra(s);
+	ft_showindex_dd(s);
+	ft_rra(s);
+	ft_showindex_dd(s);
+	ft_pb(s);
+	ft_showindex_dd(s);
+	ft_pb(s);
+	ft_showindex_dd(s);
+	ft_pb(s);
+	ft_showindex_dd(s);
+	ft_pb(s);
+	ft_showindex_dd(s);
+	ft_pb(s);
+	ft_showindex_dd(s);
+	ft_pa(s);
+	ft_pa(s);
+	ft_pa(s);
+	ft_pa(s);
+	ft_pa(s);
+	ft_pa(s);
+	ft_showindex_dd(s);
+
+
 	// ft_showindex(s);
 	// ft_printf("argc - 1: %d\n", argc- 1);
 	// if (argc - 1 == 2)
@@ -47,7 +77,6 @@ int	main(int argc, char **argv)
 	// ft_showindex(s);
 	// ft_nodechecksort(&s->root_a);
 	// ft_nodeclear_dd(&s->head_a);
-	ft_showindex_dd(s);
 	ft_stackclear_dd(s);
 	return (0);
 }

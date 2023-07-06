@@ -71,6 +71,7 @@ void	ft_pointnode_dd(t_stack *stack)
 {
 	t_node	*curr;
 
+	stack->tail_a = NULL;
 	curr = stack->head_a;
 	if (curr != NULL)
 	{
@@ -80,6 +81,7 @@ void	ft_pointnode_dd(t_stack *stack)
 		stack->tail_a = curr;
 	}
 
+	stack->tail_b = NULL;
 	curr = stack->head_b;
 	if (curr != NULL)
 	{

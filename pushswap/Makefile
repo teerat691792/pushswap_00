@@ -14,12 +14,13 @@ SRC	= 		ft_pushswap.c \
 			ft_show_dd.c \
 			ft_index_dd.c \
 			ft_mergesort_dd.c \
+			ft_operate_dd.c \
 			ft_node.c \
-			ft_operate.c \
 			ft_mergesort.c \
-			ft_sort_a.c \
-			ft_sortmore.c \
 			ft_show.c
+#			ft_sortmore.c \
+#			ft_sort_a.c
+#			ft_operate.c \
 #			ft_stack.c
 
 OBJS := $(SRC:.c=.o)
@@ -35,7 +36,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 8))
+		$(eval ARG = $(shell shuf -i 0-100 -n 5))
 		./push_swap $(ARG)
 
 tt:
