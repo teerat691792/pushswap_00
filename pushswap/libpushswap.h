@@ -4,7 +4,7 @@
 
 # include "libft/libft.h"
 
-# define RANGE_MAX 30
+# define RANGE_MAX 100
 
 typedef struct s_node
 {

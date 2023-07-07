@@ -42,9 +42,8 @@ int	main(int argc, char **argv)
 	else
 		ft_portionsort_dd(s);
 		// ft_printf("MORE ARGC\n");
-	ft_showvertical_dd(s);
 
-	// ft_showindex_dd(s);
+	ft_showvertical_dd(s);
 	// if (ft_nodechecksort(&s->tail_a) == 0)
 	// 	ft_printf("\t\t<3 sorted OK <3\n");
 	// else
