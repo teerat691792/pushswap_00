@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	s->snd_b = NULL;
 	s->tail_a = NULL;
 	s->tail_b = NULL;
+	s->push = 0;
+	s->portion = 1;
 	s->root_a = NULL;
 	s->root_b = NULL;
 	i = 1;
@@ -32,13 +34,15 @@ int	main(int argc, char **argv)
 	ft_pointnode_dd(s);
 	ft_noderead_dd(s);
 	// ft_showindex_dd(s);
-
 	// ft_printf("argc - 1: %d\n", argc- 1);
 	if (argc - 1 == 2)
 		ft_sort2(s);
-	else
+	else if (argc - 1 < 60)
 		ft_sortmore(s, argc - 1);
-
+	else
+		ft_portionsort_dd(s);
+		// ft_printf("MORE ARGC\n");
+	ft_showvertical_dd(s);
 
 	// ft_showindex_dd(s);
 	// if (ft_nodechecksort(&s->tail_a) == 0)

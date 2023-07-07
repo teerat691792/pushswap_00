@@ -15,6 +15,7 @@ SRC	= 		ft_pushswap.c \
 			ft_mergesort_dd.c \
 			ft_operate_dd.c \
 			ft_sort3_dd.c \
+			ft_presort_dd.c \
 			ft_sortmore_dd.c
 
 OBJS := $(SRC:.c=.o)
@@ -30,7 +31,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 3))
+		$(eval ARG = $(shell shuf -i 0-100 -n 80))
 		./push_swap $(ARG)
 
 tt:
@@ -38,9 +39,12 @@ tt:
 		@for number in $(LOOP) ; do make 3; done
 		@for number in $(LOOP) ; do make 5; done
 		@for number in $(LOOP) ; do make 10; done
-		@for number in $(LOOP) ; do make 100; done
-		@for number in $(LOOP) ; do make 500; done
-
+		@for number in $(LOOP) ; do make 20; done
+		@for number in $(LOOP) ; do make 30; done
+		@for number in $(LOOP) ; do make 60; done
+#		@for number in $(LOOP) ; do make 100; done
+#		@for number in $(LOOP) ; do make 500; done
+#		@for number in $(LOOP) ; do make 1000; done
 
 2:	$(NAME)
 		$(eval ARG = $(shell shuf -i 0-100 -n 2))
@@ -66,30 +70,6 @@ tt:
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
 
-6:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 6))
-		./push_swap $(ARG) | ./checker_linux $(ARG)
-		@echo -n "Instructions: "
-		@./push_swap $(ARG) | wc -l
-
-7:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 7))
-		./push_swap $(ARG) | ./checker_linux $(ARG)
-		@echo -n "Instructions: "
-		@./push_swap $(ARG) | wc -l
-
-8:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 8))
-		./push_swap $(ARG) | ./checker_linux $(ARG)
-		@echo -n "Instructions: "
-		@./push_swap $(ARG) | wc -l
-
-9:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 9))
-		./push_swap $(ARG) | ./checker_linux $(ARG)
-		@echo -n "Instructions: "
-		@./push_swap $(ARG) | wc -l
-
 10:	$(NAME)
 		$(eval ARG = $(shell shuf -i 0-100 -n 10))
 		./push_swap $(ARG) | ./checker_linux $(ARG)
@@ -102,12 +82,17 @@ tt:
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
 
-50:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-100 -n 50))
+30:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 30))
 		./push_swap $(ARG) | ./checker_linux $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
 
+60:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-100 -n 60))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
 
 100:	$(NAME)
 		$(eval ARG = $(shell shuf -i 0-1000 -n 100))
