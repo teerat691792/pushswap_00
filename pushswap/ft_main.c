@@ -37,13 +37,14 @@ int	main(int argc, char **argv)
 	// ft_printf("argc - 1: %d\n", argc- 1);
 	if (argc - 1 == 2)
 		ft_sort2(s);
-	else if (argc - 1 < 60)
+	else if (argc - 1 < 15)
 		ft_sortmore(s, argc - 1);
 	else
-		ft_portionsort_dd(s);
+		ft_initquick_dd(s);
+		// ft_portionsort_dd(s);
 		// ft_printf("MORE ARGC\n");
 
-	ft_showvertical_dd(s);
+	// ft_showvertical_dd(s);
 	// if (ft_nodechecksort(&s->tail_a) == 0)
 	// 	ft_printf("\t\t<3 sorted OK <3\n");
 	// else

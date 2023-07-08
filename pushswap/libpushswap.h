@@ -87,4 +87,10 @@ void 	ft_sortrepeat(t_stack *stack, int count, int min_index, int min_rank);
 void	ft_portionsort_dd(t_stack *stack);
 void	ft_presortoption(t_stack *stack);
 
+//ft_quicksort_dd.c
+void	ft_initquick_dd(t_stack *stack);
+void	ft_quicksort_dd(t_stack *stack,  int low, int high);
+int		ft_partition_dd(t_stack *stack, int low, int high);
+void   ft_quicksort_max(t_stack *stack,  int low, int high);
+
 #endif

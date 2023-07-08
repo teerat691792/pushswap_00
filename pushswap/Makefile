@@ -16,6 +16,7 @@ SRC	= 		ft_pushswap.c \
 			ft_operate_dd.c \
 			ft_sort3_dd.c \
 			ft_presort_dd.c \
+			ft_quicksort_dd.c \
 			ft_sortmore_dd.c
 
 OBJS := $(SRC:.c=.o)
@@ -31,7 +32,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-1000 -n 500))
+		$(eval ARG = $(shell shuf -i 0-1000 -n 100))
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l
 

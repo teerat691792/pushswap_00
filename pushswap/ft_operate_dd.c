@@ -49,18 +49,20 @@ void	ft_ss(t_stack *stack)
 
 void	ft_shiftup(t_node **head, t_node **tail)
 {
-	t_node	*tmp_f;
 	t_node	*last;
 	t_node	*first;
 
-	first = *head;
 	last = *tail;
-	tmp_f = first->prev;
-	first->next = last;
+	first = *head;
+
 	last->prev = first;
-	tmp_f->next = NULL;
+	if (first->prev != NULL)
+	{
+		*head = first->prev;
+		first->prev->next = NULL;
+	}
+	first->next = last;
 	first->prev = NULL;
-	*head = tmp_f;
 	*tail = first;
 }
 
@@ -83,28 +85,29 @@ void	ft_ra(t_stack *stack)
 // ra & rb ==> rr
 void	ft_rr(t_stack *stack)
 {
-	ft_shiftup(&stack->head_b, &stack->tail_b);
-	ft_pointnode_dd(stack);
 	ft_shiftup(&stack->head_a, &stack->tail_a);
+	ft_pointnode_dd(stack);
+	ft_shiftup(&stack->head_b, &stack->tail_b);
 	ft_pointnode_dd(stack);
 	ft_printf("rr\n");
 }
 
 void	ft_shiftdown(t_node **head, t_node **tail)
 {
-	t_node	*tmp_l;
 	t_node	*last;
 	t_node	*first;
 
 	first = *head;
 	last = *tail;
-	tmp_l = last->next;
 	first->next = last;
-	last->next = NULL;
+	if (last->next != NULL)
+	{
+		*tail = last->next;
+		last->next->prev = NULL;
+	}
 	last->prev = first;
-	tmp_l->prev = NULL;
+	last->next = NULL;
 	*head = last;
-	*tail = tmp_l;
 }
 
 //take first node of stack_a to last node of stack_a
@@ -137,7 +140,6 @@ void	ft_push_b(t_node **head_dst, t_node **head_src)
 {
 	t_node	*first_dst;
 	t_node	*first_src;
-	t_node	*tmp;
 
 	if (!*head_src)
 		return ;
@@ -145,29 +147,24 @@ void	ft_push_b(t_node **head_dst, t_node **head_src)
 	first_src = *head_src;
 	if (first_dst == NULL)
 	{
-		tmp = first_src->prev;
-		*head_dst = first_src;
+		*head_src = first_src->prev;
+		first_src->prev->next = NULL;
 		first_src->prev = NULL;
-		tmp->next = NULL;
-		*head_src = tmp;
-	}
-	else if (first_src->prev == NULL)
-	{
-		first_dst->next = first_src;
-		first_src->prev = first_dst;
-		*head_src = NULL;
 		*head_dst = first_src;
 	}
 	else
 	{
-		tmp = first_src->prev;
-		first_src->prev = first_dst;
+		if (first_src->prev != NULL)
+		{
+			*head_src = first_src->prev;
+			first_src->prev->next = NULL;
+		}
 		first_dst->next = first_src;
-		tmp->next = NULL;
-		*head_src = tmp;
+		first_src->prev = first_dst;
 		*head_dst = first_src;
 	}
 }
+
 //take last node of stack_a to last node of stack_b |OR| do nothing if stack_a is empty, pb
 void	ft_pb(t_stack *stack)
 {
