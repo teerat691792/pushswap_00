@@ -26,6 +26,10 @@ typedef struct s_stack
 	int		portion;
 	int		max_port;
 	int		push;
+	int		limit;
+	int		range;
+	int		half;
+	int		count;
 }	t_stack;
 
 /*double linked list functions*/
@@ -79,7 +83,7 @@ void	ft_sort3(t_stack *stack, int count, int min_index);
 void	ft_sort3_fix(t_stack *stack);
 
 //ft_sortmore_dd.c
-void ft_sortmore(t_stack *stack, int count);
+void	ft_sortmore(t_stack *stack, int count);
 void 	ft_sortrepeat(t_stack *stack, int count, int min_index, int min_rank);
 
 //ft_presort_dd.c
@@ -91,5 +95,11 @@ void	ft_initquick_dd(t_stack *stack);
 void	ft_quicksort_dd(t_stack *stack,  int low, int high);
 int		ft_partition_dd(t_stack *stack, int low, int high);
 void	ft_popback(t_stack *stack, int low, int high);
+
+//ft_bubblesort_dd.c
+void	ft_bubblesort_dd(t_stack *stack);
+void	ft_divideportion(t_stack *stack);
+void	ft_insertback(t_stack *stack);
+void	ft_findbigindex(t_stack *stack, int *top, int *bot, int *big);
 
 #endif

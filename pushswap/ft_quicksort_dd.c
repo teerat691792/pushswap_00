@@ -14,7 +14,6 @@ void	ft_initquick_dd(t_stack *stack)
 	// ft_showvertical_dd(stack);
 }
 
-
 void	ft_quicksort_dd(t_stack *stack, int low, int high)
 {
 	int mid;
@@ -58,16 +57,19 @@ int		ft_partition_dd(t_stack *stack, int low, int high)
 	{
 		if (stack->head_a->index > stack->head_a->prev->index)
 			ft_sa(stack);
-		// ft_pb(stack);
 	}
 	else
 	{
 		while (push > 0)
 		{
-			if (stack->head_a->index > pivot)
+			if (stack->head_a->index == pivot && stack->head_a->prev->index > pivot)
 			{
-				ft_ra(stack);
+				ft_pb(stack);
+				push--;
+				ft_rr(stack);
 			}
+			else if (stack->head_a->index > pivot)
+				ft_ra(stack);
 			else if (stack->head_a->index == pivot)
 			{
 				ft_pb(stack);
@@ -76,21 +78,15 @@ int		ft_partition_dd(t_stack *stack, int low, int high)
 			}
 			else //head_a->index < pivot
 			{
-				// ft_ra(stack);
 				ft_pb(stack);
 				push--;
 			}
 		}
-		ft_rrb(stack);
 		if (stack->tail_a->index < stack->head_a->index)
-			ft_rra(stack);
+			ft_rrr(stack);
+		else
+			ft_rrb(stack);
 	}
-	// push = (high + 1 - low) / 2;
-	// while (push > 0)
-	// {
-	// 	ft_pa(stack);
-	// 	push--;
-	// }
 	// ft_showvertical_dd(stack);
 	return (pivot);
 }
@@ -106,13 +102,8 @@ void	ft_popback(t_stack *stack, int low, int high)
 	// ft_printf("pop: %d\t", pop);
 	// ft_printf("low: %d\t", low);
 	// ft_printf("high: %d\n", high);
-	if (pop == 0)
+	if (pop < 2)
 		return ;
-	else if (pop == 1)
-	{
-		// ft_pa(stack);
-		return ;
-	}
 	else if (pop == 2)
 	{
 		ft_pa(stack);
@@ -139,5 +130,4 @@ void	ft_popback(t_stack *stack, int low, int high)
 		ft_quicksort_dd(stack, low, high);
 	}
 	// ft_showvertical_dd(stack);
-
 }

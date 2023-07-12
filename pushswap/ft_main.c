@@ -35,10 +35,12 @@ int	main(int argc, char **argv)
 		ft_sort2(s);
 	// else if (argc - 1 == 3)
 	// 	ft_sort3_fix(s);
-	else if (argc - 1 < 60)
+	else if (argc - 1 < 10)
 		ft_sortmore(s, argc - 1);
 	else
-		ft_initquick_dd(s);
+		ft_bubblesort_dd(s);
+		// ft_initquick_dd(s);
+		// ft_sortmore(s, argc - 1);
 		// ft_portionsort_dd(s);
 		// ft_printf("MORE ARGC\n");
 
