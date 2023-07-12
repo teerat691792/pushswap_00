@@ -80,7 +80,6 @@ void	ft_pointnode_dd(t_stack *stack)
 			curr = curr->prev;
 		stack->tail_a = curr;
 	}
-
 	stack->tail_b = NULL;
 	curr = stack->head_b;
 	if (curr != NULL)
@@ -102,7 +101,5 @@ void	ft_stackclear_dd(t_stack *stack)
 	stack->snd_b = NULL;
 	stack->tail_a = NULL;
 	stack->tail_b = NULL;
-	stack->root_a = NULL;
-	stack->root_b = NULL;
 	free(stack);
 }

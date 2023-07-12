@@ -3,20 +3,23 @@
 
 void	ft_swapsecondtop(t_node **head, t_node **snd)
 {
-	t_node	*tmp;
 	t_node	*first;
 	t_node	*sec;
+	t_node	*tmp;
 
 	if (ft_nodecount_dd(*snd) < 2)
 		return ;
 	first = *head;
 	sec = *snd;
-	tmp = sec->prev;
-	first->prev = tmp;
-	sec->prev = first;
-	tmp->next = first;
+	if (sec->prev != NULL)
+	{
+		tmp = sec->prev;
+		tmp->next = first;
+		first->prev = tmp;
+	}
 	first->next = sec;
 	sec->next = NULL;
+	sec->prev = first;
 	*head = sec;
 	*snd = first;
 }
@@ -99,12 +102,13 @@ void	ft_shiftdown(t_node **head, t_node **tail)
 
 	first = *head;
 	last = *tail;
-	first->next = last;
+
 	if (last->next != NULL)
 	{
 		*tail = last->next;
 		last->next->prev = NULL;
 	}
+	first->next = last;
 	last->prev = first;
 	last->next = NULL;
 	*head = last;
@@ -141,14 +145,20 @@ void	ft_push_b(t_node **head_dst, t_node **head_src)
 	t_node	*first_dst;
 	t_node	*first_src;
 
-	if (!*head_src)
-		return ;
 	first_dst = *head_dst;
 	first_src = *head_src;
+	if (!first_src)
+	{
+		*head_src = NULL;
+		return ;
+	}
 	if (first_dst == NULL)
 	{
-		*head_src = first_src->prev;
-		first_src->prev->next = NULL;
+		if (first_src->prev != NULL)
+		{
+			*head_src = first_src->prev;
+			first_src->prev->next = NULL;
+		}
 		first_src->prev = NULL;
 		*head_dst = first_src;
 	}
@@ -159,6 +169,8 @@ void	ft_push_b(t_node **head_dst, t_node **head_src)
 			*head_src = first_src->prev;
 			first_src->prev->next = NULL;
 		}
+		else
+			*head_src = NULL;
 		first_dst->next = first_src;
 		first_src->prev = first_dst;
 		*head_dst = first_src;

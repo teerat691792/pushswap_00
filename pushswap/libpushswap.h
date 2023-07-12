@@ -22,8 +22,6 @@ typedef struct s_stack
 	t_node	*snd_b;
 	t_node	*tail_a;
 	t_node	*tail_b;
-	t_node	*root_a;
-	t_node	*root_b;
 	int		len;
 	int		portion;
 	int		max_port;
@@ -78,6 +76,7 @@ void	ft_pa(t_stack *stack);
 int		ft_nodechecksort(t_node **root);
 void	ft_sort2(t_stack *stack);
 void	ft_sort3(t_stack *stack, int count, int min_index);
+void	ft_sort3_fix(t_stack *stack);
 
 //ft_sortmore_dd.c
 void ft_sortmore(t_stack *stack, int count);
@@ -91,6 +90,6 @@ void	ft_presortoption(t_stack *stack);
 void	ft_initquick_dd(t_stack *stack);
 void	ft_quicksort_dd(t_stack *stack,  int low, int high);
 int		ft_partition_dd(t_stack *stack, int low, int high);
-void   ft_quicksort_max(t_stack *stack,  int low, int high);
+void	ft_popback(t_stack *stack, int low, int high);
 
 #endif

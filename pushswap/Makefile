@@ -32,7 +32,7 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-1000 -n 100))
+		$(eval ARG = $(shell shuf -i 0-1000 -n 3))
 		./push_swap $(ARG)
 		./push_swap $(ARG) | wc -l
 
@@ -44,8 +44,8 @@ tt:
 		@for number in $(LOOP) ; do make 20; done
 		@for number in $(LOOP) ; do make 30; done
 		@for number in $(LOOP) ; do make 60; done
-#		@for number in $(LOOP) ; do make 100; done
-#		@for number in $(LOOP) ; do make 500; done
+		@for number in $(LOOP) ; do make 100; done
+		@for number in $(LOOP) ; do make 500; done
 #		@for number in $(LOOP) ; do make 1000; done
 
 2:	$(NAME)
