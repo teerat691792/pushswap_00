@@ -17,7 +17,7 @@ void	ft_bubblesort_dd(t_stack *stack)
 
 void	ft_divideportion(t_stack *stack)
 {
-	int		first;
+	t_node	*first;
 
 	while (stack->count < stack->len)
 	{
@@ -26,19 +26,24 @@ void	ft_divideportion(t_stack *stack)
 			stack->limit += stack->range;
 			stack->half += stack->range;
 		}
-		first = stack->head_a->index;
-		if (first < stack->limit && first < stack->half)
+		first = stack->head_a;
+		if (first->index < stack->limit && first->index < stack->half)
 		{
 			ft_pb(stack);
 			stack->count++;
 		}
-		else if (first < stack->limit && first >= stack->half)
+		else if (first->index < stack->limit && first->index >= stack->half)
 		{
+			if (first->prev != NULL)
+				first = first->prev;
 			ft_pb(stack);
-			ft_rb(stack);
+			if (first->index >= stack->limit)
+				ft_rr(stack);
+			else
+				ft_rb(stack);
 			stack->count++;
 		}
-		else if (first >= stack->limit)
+		else if (first->index >= stack->limit)
 			ft_ra(stack);
 	}
 }

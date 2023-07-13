@@ -34,6 +34,11 @@ typedef struct s_stack
 
 /*double linked list functions*/
 
+//ft_error.c
+int		ft_checkerror(int argc, char **argv);
+int		ft_isnumber(char *str);
+int		ft_isdup(int argc, char **argv);
+
 //ft_node_dd.c
 t_node	*ft_nodenew_dd(int value);
 void	ft_nodeaddback_dd(t_node **tail, int value);

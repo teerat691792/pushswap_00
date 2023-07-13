@@ -19,6 +19,7 @@ SRC	= 		ft_pushswap.c \
 			ft_presort_dd.c \
 			ft_quicksort_dd.c \
 			ft_bubblesort_dd.c \
+			ft_error.c \
 			ft_sortmore_dd.c
 
 OBJS := $(SRC:.c=.o)
@@ -34,13 +35,23 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-	$(eval ARG = $(shell shuf -i 0-1000 -n 10))
+	$(eval ARG = $(shell shuf -i 0-1000 -n 100))
 	./push_swap $(ARG)
 	./push_swap $(ARG) | wc -l
 
+v:	$(NAME)
+	$(eval ARG = $(shell shuf -i 0-1000 -n 500))
+	./push_swap $(ARG) | ./visualizer/pro_checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+c:
+	make re
+	bash Pushswap_test_linux.sh 20 20
+
 tt:
 	@for number in $(LOOP) ; do make 100; done
-#	@for number in $(LOOP) ; do make 500; done
+	@for number in $(LOOP) ; do make 500; done
 #	@for number in $(LOOP) ; do make 2; done
 #	@for number in $(LOOP) ; do make 3; done
 #	@for number in $(LOOP) ; do make 5; done

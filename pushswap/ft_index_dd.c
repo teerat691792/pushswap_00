@@ -20,7 +20,8 @@ int	ft_nodecount_dd(t_node *node)
 {
 	if (node == NULL)
 		return (0);
-	return (1 + ft_nodecount_dd(node->next));
+	else
+		return (1 + ft_nodecount_dd(node->next));
 }
 
 void	ft_nodecopy_dd(t_node *tail, int *arr)
