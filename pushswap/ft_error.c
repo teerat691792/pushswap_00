@@ -28,6 +28,8 @@ int		ft_isnumber(char *str)
 	i = 0;
 	if (str[i] == '-')
 		i++;
+	if (str[i] == '\0')
+		return (1);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))

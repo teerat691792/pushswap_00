@@ -30,12 +30,15 @@ int	main(int argc, char **argv)
 		}
 		ft_pointnode_dd(s);
 		ft_noderead_dd(s);
-		if (argc - 1 == 2)
-			ft_sort2(s);
-		else if (argc - 1 < 10)
-			ft_sortmore(s, argc - 1);
-		else
-			ft_bubblesort_dd(s);
+		if (ft_nodechecksort(&s->tail_a) == 1)
+		{
+			if (argc - 1 == 2)
+				ft_sort2(s);
+			else if (argc - 1 < 10)
+				ft_sortmore(s, argc - 1);
+			else
+				ft_bubblesort_dd(s);
+		}
 		ft_stackclear_dd(s);
 	}
 	return (0);

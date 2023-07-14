@@ -18,10 +18,18 @@ void	ft_noderead_dd(t_stack *stack)
 
 int	ft_nodecount_dd(t_node *node)
 {
-	if (node == NULL)
-		return (0);
-	else
-		return (1 + ft_nodecount_dd(node->next));
+	int i;
+
+	i = 0;
+	while (node != NULL)
+	{
+		node = node->next;
+		i++;
+	}
+	return (i);
+	// if (node == NULL)
+	// 	return (0);
+	// return (1 + ft_nodecount_dd(node->next));
 }
 
 void	ft_nodecopy_dd(t_node *tail, int *arr)
