@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WINY 720
-# define WINX 1280
+# define WINY 900
+# define WINX 1800
 
 # define X 0
 # define Y 1

@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		{
 			if (argc - 1 == 2)
 				ft_sort2(s);
-			else if (argc - 1 < 10)
+			else if (argc - 1 < 50)
 				ft_sortmore(s, argc - 1);
 			else
 				ft_bubblesort_dd(s);

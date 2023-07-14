@@ -105,6 +105,9 @@ void	ft_popback(t_stack *stack, int low, int high);
 void	ft_bubblesort_dd(t_stack *stack);
 void	ft_divideportion(t_stack *stack);
 void	ft_insertback(t_stack *stack);
-void	ft_findbigindex(t_stack *stack, int *top, int *bot, int *big);
+int		ft_findbigindex(t_stack *stack, int *top, int *bot, int *big);
+void	ft_pushbig(t_stack *stack, int top, int bot);
+int		ft_findsmallindex(t_stack *stack, int *top, int *bot, int *small);
+void	ft_pushsmall(t_stack *stack, int top, int bot);
 
 #endif

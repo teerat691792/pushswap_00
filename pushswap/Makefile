@@ -1,6 +1,6 @@
 
-LOOP	=	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 \
-			21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+LOOP	=	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+#			21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
 
 # FLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address -static-libasan
 FLAGS	=	-Wall -Wextra -Werror -g
@@ -36,12 +36,14 @@ $(NAME): $(OBJS)
 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 
 t:	$(NAME)
-	$(eval ARG = $(shell shuf -i 0-1000 -n 100))
+	$(eval ARG = $(shell shuf -i 0-1000 -n 5))
 	./push_swap $(ARG)
 	./push_swap $(ARG) | wc -l
 
 v:	$(NAME)
-	$(eval ARG = $(shell shuf -i 0-1000 -n 100))
+	make re
+	make -C ./visualizer re
+	$(eval ARG = $(shell shuf -i 0-1000 -n 20))
 	./push_swap $(ARG) | ./visualizer/pro_checker $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
@@ -51,16 +53,16 @@ c:
 	bash Pushswap_test_linux.sh 20 20
 
 tt:
-	@for number in $(LOOP) ; do make 1000; done
-#	@for number in $(LOOP) ; do make 100; done
+	@for number in $(LOOP) ; do make 2; done
+	@for number in $(LOOP) ; do make 3; done
+	@for number in $(LOOP) ; do make 5; done
+	@for number in $(LOOP) ; do make 10; done
+	@for number in $(LOOP) ; do make 20; done
+	@for number in $(LOOP) ; do make 30; done
+	@for number in $(LOOP) ; do make 60; done
+	@for number in $(LOOP) ; do make 100; done
 #	@for number in $(LOOP) ; do make 500; done
-#	@for number in $(LOOP) ; do make 2; done
-#	@for number in $(LOOP) ; do make 3; done
-#	@for number in $(LOOP) ; do make 5; done
-#	@for number in $(LOOP) ; do make 10; done
-#	@for number in $(LOOP) ; do make 20; done
-#	@for number in $(LOOP) ; do make 30; done
-#	@for number in $(LOOP) ; do make 60; done
+#	@for number in $(LOOP) ; do make 1000; done
 
 2:	$(NAME)
 	$(eval ARG = $(shell shuf -i 0-100 -n 2))
