@@ -37,7 +37,7 @@ int	ft_findnodemin(t_node **root, int count, int min_index)
 	return (-1);
 }
 
-void ft_sortmore(t_stack *stack, int count)
+void	ft_sortmore_dd(t_stack *stack, int count)
 {
 	int		min_index;
 	int		min_rank;
@@ -49,13 +49,12 @@ void ft_sortmore(t_stack *stack, int count)
 	if (min_index == -1 || min_rank == -1)
 		return ;
 	if (count == 3)
-		ft_sort3(stack, count, min_index);
+		ft_sort3_dd(stack, count, min_index);
 	else
 		ft_sortrepeat(stack, count, min_index, min_rank);
 }
 
-
-void 	ft_sortrepeat(t_stack *stack, int count, int min_index, int min_rank)
+void	ft_sortrepeat(t_stack *stack, int count, int min_index, int min_rank)
 {
 	if (ft_nodechecksort(&stack->tail_a) == 0)
 		return ;
@@ -72,7 +71,7 @@ void 	ft_sortrepeat(t_stack *stack, int count, int min_index, int min_rank)
 			min_rank = ft_findnodemin(&stack->tail_a, count, min_index);
 		}
 		ft_pb(stack);
-		ft_sortmore(stack, count - 1);
+		ft_sortmore_dd(stack, count - 1);
 		ft_pa(stack);
 	}
 }

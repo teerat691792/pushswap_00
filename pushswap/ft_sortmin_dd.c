@@ -15,20 +15,17 @@ int	ft_nodechecksort(t_node **root)
 	return (0);
 }
 
-void	ft_sort2(t_stack *stack)
+void	ft_sort2_dd(t_stack *stack)
 {
-	t_node *curr;
-
-	curr = stack->tail_a;
-	if (curr->index < curr->next->index)
+	if (stack->head_a->index > stack->head_a->prev->index)
 		ft_ra(stack);
 	else
-		return;
+		return ;
 }
 
-void	ft_sort3(t_stack *stack, int count, int min_index)
+void	ft_sort3_dd(t_stack *stack, int count, int min_index)
 {
-	int max_index;
+	int	max_index;
 
 	if (ft_nodechecksort(&stack->tail_a) == 0)
 		return ;
@@ -42,26 +39,4 @@ void	ft_sort3(t_stack *stack, int count, int min_index)
 		if (ft_nodechecksort(&stack->tail_a) == 1)
 			ft_sa(stack);
 	}
-
 }
-
-
-void	ft_sort3_fix(t_stack *stack)
-{
-	if (ft_nodechecksort(&stack->tail_a) == 0)
-		return ;
-	else
-	{
-			if (stack->head_a->index > stack->snd_a->prev->index)
-				ft_sa(stack);
-			if (ft_nodechecksort(&stack->tail_a) == 1)
-			{
-				if (stack->head_a->index > stack->tail_a->index)
-					ft_ra(stack);
-				else
-					ft_rra(stack);
-			}
-	}
-	// ft_showindex_dd(stack);
-}
-

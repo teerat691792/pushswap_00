@@ -1,38 +1,6 @@
 
 #include "libpushswap.h"
 
-t_node	*ft_nodenew_dd(int value)
-{
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->index = -1;
-	new->prev = NULL;
-	new->next = NULL;
-	return (new);
-}
-
-void	ft_nodeaddback_dd(t_node **tail, int value)
-{
-	t_node	*curr;
-	t_node	*new;
-
-	new = ft_nodenew_dd(value);
-	if (*tail == NULL)
-	{
-		*tail = new;
-		return ;
-	}
-	curr = *tail;
-	while (curr->next != NULL)
-		curr = curr->next;
-	curr->next = new;
-	new->prev = curr;
-}
-
 void	ft_nodeaddfront_dd(t_node **head, int value)
 {
 	t_node	*curr;
@@ -51,20 +19,18 @@ void	ft_nodeaddfront_dd(t_node **head, int value)
 	new->next = curr;
 }
 
-void	ft_nodeclear_dd(t_node **root)
+t_node	*ft_nodenew_dd(int value)
 {
-	t_node	*curr;
-	t_node	*tmp;
+	t_node	*new;
 
-	curr = *root;
-	while (curr != NULL)
-	{
-		tmp = curr;
-		curr = curr->next;
-		free(tmp);
-	}
-	free(curr);
-	*root = NULL;
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->index = -1;
+	new->prev = NULL;
+	new->next = NULL;
+	return (new);
 }
 
 void	ft_pointnode_dd(t_stack *stack)
@@ -102,4 +68,20 @@ void	ft_stackclear_dd(t_stack *stack)
 	stack->tail_a = NULL;
 	stack->tail_b = NULL;
 	free(stack);
+}
+
+void	ft_nodeclear_dd(t_node **root)
+{
+	t_node	*curr;
+	t_node	*tmp;
+
+	curr = *root;
+	while (curr != NULL)
+	{
+		tmp = curr;
+		curr = curr->next;
+		free(tmp);
+	}
+	free(curr);
+	*root = NULL;
 }

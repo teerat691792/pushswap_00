@@ -3,22 +3,26 @@
 
 void	ft_noderead_dd(t_stack *stack)
 {
-	int len;
-	int *arr;
+	int		len;
+	t_merge	*merge;
 
+	merge = malloc(sizeof(t_merge));
 	len = ft_nodecount_dd(stack->tail_a);
-	arr = malloc(sizeof(int) * len);
-	if (!arr)
+	merge->arr = malloc(sizeof(int) * len);
+	if (!merge->arr)
 		return ;
-	ft_nodecopy_dd(stack->tail_a, arr);
-	ft_mergesort_dd(arr, len);
-	ft_putindex_dd(&stack->tail_a, arr);
-	free(arr);
+	ft_nodecopy_dd(stack->tail_a, merge->arr);
+	merge->lf = 0;
+	merge->rg = len - 1;
+	ft_startsort_dd(merge, merge->lf, merge->rg);
+	ft_putindex_dd(&stack->tail_a, merge->arr);
+	free(merge->arr);
+	free(merge);
 }
 
 int	ft_nodecount_dd(t_node *node)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (node != NULL)
@@ -27,14 +31,11 @@ int	ft_nodecount_dd(t_node *node)
 		i++;
 	}
 	return (i);
-	// if (node == NULL)
-	// 	return (0);
-	// return (1 + ft_nodecount_dd(node->next));
 }
 
 void	ft_nodecopy_dd(t_node *tail, int *arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tail != NULL)
@@ -47,8 +48,8 @@ void	ft_nodecopy_dd(t_node *tail, int *arr)
 
 void	ft_putindex_dd(t_node **tail, int *arr)
 {
-	int i;
-	t_node *curr;
+	int		i;
+	t_node	*curr;
 
 	curr = *tail;
 	while (curr != NULL)
