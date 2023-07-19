@@ -1,6 +1,6 @@
 
-FLAG = -Wall -Werror -Wextra -g -pthread
-# FLAG = -Wall -Werror -Wextra -g -pthread -fsanitize=address -static-libasan
+# FLAG = -Wall -Werror -Wextra -g -pthread
+FLAG = -Wall -Werror -Wextra -g -pthread -fsanitize=address -static-libasan
 
 LIB		=	-L. -lphilo
 
@@ -20,6 +20,10 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 # 	gcc $(FLAGS) ft_main.c $(LIB) -o push_swap
 	gcc $(FLAG) main.c $(LIB) -o philo
+
+t:
+	make -s re
+	./philo 4 800 200 300 5
 
 clean:
 	rm -f $(OBJS)
