@@ -13,6 +13,10 @@
 # include <error.h>
 # include <semaphore.h>
 
+# define ALIVE	0
+# define FULL	1
+# define DEAD	2
+
 # define RED	"\033[0;31m"
 # define GREEN	"\033[1;32m"
 # define BLUE	"\033[0;34m"
@@ -46,6 +50,7 @@ typedef struct s_rule
 typedef struct s_philo
 {
 	pthread_t		thread;
+	int				status;
 	int				curr_id;
 	int				next_id;
 	int				curr_fork;
@@ -54,7 +59,7 @@ typedef struct s_philo
 	int				is_eating;
 	int				is_sleeping;
 	int				is_thinking;
-	int				is_dead;
+	int				*is_dead;
 	int				is_full;
 	int				fasting_time;
 	t_rule			rule;
@@ -75,6 +80,17 @@ typedef struct s_philo
 
 //ft_philo.c
 void    ft_test(void);
+
+//ft_startphilo.c
+void	ft_startphilo(t_rule main);
+
+//ft_operatephilo.c
+long int	ft_caltime(struct timeval timestamp);
+void		*ft_thinking(t_philo *philo);
+void		*ft_takeforks(t_philo *philo);
+void		*ft_eating(t_philo *philo);
+void		*ft_sleep(t_philo *philo);
+
 
 
 #endif

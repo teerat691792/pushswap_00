@@ -6,7 +6,9 @@ LIB		=	-L. -lphilo
 
 NAME  = libphilo.a
 
-SRC	= 	ft_philo.c
+SRC	= 	ft_philo.c \
+		ft_operatephilo.c \
+		ft_startphilo.c
 
 OBJS := $(SRC:.c=.o)
 
@@ -23,7 +25,7 @@ $(NAME): $(OBJS)
 
 t:
 	make -s re
-	./philo 4 800 200 300 5
+	./philo 5 600 200 300 4
 
 clean:
 	rm -f $(OBJS)
